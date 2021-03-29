@@ -35,7 +35,7 @@ async function getAllQuizzesAsync() {
     const list = quizzes.map(quiz => {
         return {
             id: quiz.id,
-            name: quiz.name
+            name:quiz.name.toUpperCase()
         };
     });
     return list;
@@ -276,7 +276,7 @@ async function submitAnswerAsync(roomCode, playerName, answer) {
 }
 
 function start(instance) {
-    if (instance.players.length == 0) {
+    if (instance.players.length < 2) {
         throw new InvalidOperationError('Not enough players yet');
     }
     instance.questionNumber = 1;
